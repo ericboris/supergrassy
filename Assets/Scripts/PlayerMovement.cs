@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState {
+    walk,
+    attack,
+    interact
+}
+
 public class PlayerMovement : MonoBehaviour {
+
     // Instance variables.
+    public PlayerState currentState;
     public float speed;
     private Rigidbody2D myRigidbody;
     private Vector3 change;
@@ -11,8 +19,11 @@ public class PlayerMovement : MonoBehaviour {
     
     // Start is called before the first frame update.
     void Start() {
+	currentState = PlayerState.walk;
 	animator = GetComponent<Animator>();
 	myRigidbody = GetComponent<Rigidbody2D>();
+	animator.SetFloat("moveX", 0);
+	animator.SetFloat("moveY", -1);
     }
 
     // Update is called once per frame.
