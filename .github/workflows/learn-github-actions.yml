@@ -1,0 +1,7 @@
+name: learn-github-actions
+on: [push]
+jobs:
+    echo-on-push:
+	runs-on: ubuntu-latest
+	steps:
+	    - run: echo Run Tests
